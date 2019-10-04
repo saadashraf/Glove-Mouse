@@ -1,0 +1,17 @@
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\bin\Debug\GyroMouse.exe.config
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\bin\Debug\GyroMouse.exe
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\bin\Debug\GyroMouse.pdb
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse.csprojResolveAssemblyReference.cache
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\MainWindow.g.cs
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\App.g.cs
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse_MarkupCompile.cache
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse_MarkupCompile.lref
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\MainWindow.baml
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse.g.resources
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse.Properties.Resources.resources
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse.csproj.GenerateResource.Cache
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse.csproj.CoreCompileInputs.cache
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse.exe
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse.pdb
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\bin\Debug\Resource\GyroMouseBackground.png
+G:\REPOS\GyroMouse\GyroMouse\GyroMouse\obj\Debug\GyroMouse_Content.g.cs
