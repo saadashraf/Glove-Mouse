@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GyroMouse</name>
+    </assembly>
+    <members>
+        <member name="T:GyroMouse.MouseController">
+            <summary>
+            The controller class that links serial signals to the control of mouse.
+            It also provides methods to change mouse properties, i.e y-axis inversion, safety mode and click only mode for left mouse button.
+            It also handles events from serial port to move the mouse pointer to desired location.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MouseController.Init">
+            <summary>
+            Creates a new serial port with port name and baud rate but does not open it.
+            Binds data receive event from the serial port to data received method.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MouseController.SPort_DataReceived(System.Object,System.IO.Ports.SerialDataReceivedEventArgs)">
+            <summary>
+            This methods runs everytime some data is received in serial port.
+            Based on the packet's leading string, it controls mouse or shows error message.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MouseController.Start">
+            <summary>
+            Opens the port while handling exceptions.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GyroMouse.MouseController.End">
+            <summary>
+            Closes existing serial port connection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GyroMouse.MouseController.ToggleYInversion">
+            <summary>
+            Toggles Y axis movement inversion for mouse pointer movement.
+            </summary>
+            <returns> Inverted condition </returns>
+        </member>
+        <member name="M:GyroMouse.MouseController.EnableYInversion">
+            <summary>
+            Enables Y axis inversion for mouse pointer movement.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MouseController.DisableYInversion">
+            <summary>
+            Disables Y axis inversion for mouse pointer movement.
+            </summary>
+        </member>
+        <member name="T:GyroMouse.VirtualMouse">
+            <summary>
+            It is the core driver class that contains all the methods for controlling the mouse
+            It taps into the windows two button mouse system using the dll.
+            The mouse pointer is mapped before converting the values based on resolution.
+            Hence, the mouse becomes resolution independent.
+            Mouse pointer locations is mapped onto an unsigned int16 ranging from 1 to 65535 both horizontally and vertically.
+            This class supports absolute and relative movement of mouse pointer.
+            Up, Down and Click methods are available for left and right mouse buttons.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.Move(System.Int32,System.Int32)">
+            <summary>
+            Move mouse pointer relatively to previous location.
+            </summary>
+            <param name="xDelta"> Horizontal pointer location difference. </param>
+            <param name="yDelta"> Vertical pointer location difference.</param>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.MoveTo(System.Int32,System.Int32)">
+            <summary>
+            Move mouse pointer to absolute location.
+            </summary>
+            <param name="x"> Horizontal location. Value must be between 1 to 65535. </param>
+            <param name="y"> Vertical location. Value must be between 1 to 65535.</param>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.LeftClick">
+            <summary>
+            Perform a left click.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.LeftDown">
+            <summary>
+            Perform a left mouse button down action.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.LeftUp">
+            <summary>
+            Perform a left mouse button up action.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.RightClick">
+            <summary>
+            Perform a right click.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.RightDown">
+            <summary>
+            Perform a right mouse button down action.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.VirtualMouse.RightUp">
+            <summary>
+            Perform a right mouse button up action.
+            </summary>
+        </member>
+        <member name="T:GyroMouse.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:GyroMouse.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:GyroMouse.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:GyroMouse.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            UI for user interaction and turning on/off options for mouse pointer movement.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MainWindow.#ctor">
+            <summary>
+            Initializes window and basic components
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MainWindow.Button_Connect_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Connect button action.
+            Establishes serial connection based on the COM port selected.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.Button_Disconnect_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Disconnect button action.
+            Breaks serial connection.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.Button_Refresh_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Refresh button action.
+            Refreshes COM port list using refresh method.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.Refresh">
+            <summary>
+            Refreshes COM port list.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MainWindow.ShowMessage(System.String)">
+            <summary>
+            Displays a message in the bottom log bar.
+            </summary>
+            <param name="message"> Message to show </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.ShowWarning(System.String)">
+            <summary>
+            Displays a warning in the bottom log bar.
+            </summary>
+            <param name="message"> Message to show </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.CheckBox_YInverted_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Y inversion check box checking action.
+            Turns on Y axis inversion
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.CheckBox_YInverted_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Y inversion check box unchecking action.
+            Turns off Y axis inversion
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.CheckBox_Safety_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Safety check box checking action.
+            Turns on safety. Moving mouse pointer to top left corner disconnects connection.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.CheckBox_Safety_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Safety check box unchecking action.
+            Turns off safety. Moving mouse pointer to top left corner  does not disconnect connection.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.SetStatusConnected">
+            <summary>
+            Changes the middle rectangle color to ConnectedColor to indicate connection establishment
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MainWindow.SetStatusDisconnected">
+            <summary>
+            Changes the middle rectangle color to DisconnectedColor to indicate a severed connection.
+            </summary>
+        </member>
+        <member name="M:GyroMouse.MainWindow.Button_Help_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Help button click action.
+            Shows help.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.Button_About_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            About button click action.
+            Shows developer list.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.CheckBox_ClickMode_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            ClickMode check box checking action.
+            Turns on click only no drag mode.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.CheckBox_ClickMode_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            ClickMode check box unchecking action.
+            Turns off click only no drag mode. Drag now is enabled along with click.
+            </summary>
+            <param name="sender"> Event sender </param>
+            <param name="e"> Event argument </param>
+        </member>
+        <member name="M:GyroMouse.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:GyroMouse.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:GyroMouse.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:GyroMouse.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
